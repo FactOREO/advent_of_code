@@ -40,3 +40,5 @@ data <- read.delim("./input_part1.txt", header = FALSE)
 data[["numbers"]] <- lapply(data[["V1"]], extract_digits, TRUE)
 data[["two_digit"]] <- lapply(data[["numbers"]], get_last_and_first_digit)
 sprintf("The result is %d", sum(as.numeric(data[["two_digit"]])))
+
+# [1] "The result is 54578"
