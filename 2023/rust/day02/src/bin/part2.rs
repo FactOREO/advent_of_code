@@ -217,12 +217,10 @@ fn main() {
     println!("PART 2: The sum of the powers of the minimum required sets for each collection of draws is {}", output_part2);
 }
 
-// Input: A collection of games.
-//        Each game is represented by a number of drawn cubes
-//        Those can be of three different colors (red, blue or green)
-//        Each draw within a game is separated by a semicolon
-//        The number of independent draws is random (it cannot be assumed it is the same amount of
-//        draws per game)
+/* Output:
+ * PART 1: The number of possible games is 44 with a score of 1867
+ * PART 2: The sum of the powers of the minimum required sets for each collection of draws is 84538
+ */
 
 // A struct which contains the game data as Draw objects
 #[derive(Debug)]

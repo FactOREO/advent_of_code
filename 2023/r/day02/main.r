@@ -112,3 +112,6 @@ main <- function() {
 }
 
 main()
+
+# [1] "The number of feasible games is 44 with a score of 1867"
+# [1] "The sum of the powers of the minimum required sets for each collection of draws is 84538"
