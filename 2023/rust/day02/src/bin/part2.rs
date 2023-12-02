@@ -65,7 +65,7 @@ For each game, find the minimum set of cubes that must have been present. What i
 */
 
 fn main() {
-    // Initialize the true number of cubes for each color
+    // PART 1: Initialize the true number of cubes for each color
     let true_cubes: Draw = Draw{
         red: 12,
         green: 13,
@@ -247,7 +247,6 @@ impl Game {
         if let Some(first_draw) = self.draws.get(0) {
             // Initialize with the first draw
             let mut superset = first_draw.clone();
-
             // Iterate over the remaining draws in the game
             for draw in &self.draws[1..] {
                 superset = superset.superset(draw);
