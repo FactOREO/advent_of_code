@@ -78,7 +78,6 @@ main <- function() {
   data[, game_id := gsub("[a-z]|[A-Z]|[[:space:]]", "", game) |> as.integer()]
   data[, draw_id := gsub("[a-z]|[A-Z]|[[:space:]]|_", "", variable) |> as.integer()]
   # Create columns red, green and blue based on the string in value
-  # data[, c("red", "green", "blue") := string_to_columns(value)]
   data[, paste0("split_", 1:3) := data.table::tstrsplit(value, ",", fixed = TRUE)]
   data[, c("blue", "green", "red") := .(
                                         data.table::fcase(grepl("blue", split_1), as.integer(gsub("[a-z]|[A-Z]|[[:space:]]", "", split_1)),
