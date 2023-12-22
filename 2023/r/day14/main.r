@@ -1,10 +1,8 @@
 input <- readLines("./input.txt")
 
 # Goal: Tilt all the rocks north
-# -> tilt column by column
+# -> tilt row- or columnwise (see part2)
 rolling_stones <- function(vec, reverse = FALSE) {
-  # print("Process vector:")
-  # print(vec)
   if (reverse) vec <- rev(vec)
   while (TRUE) {
     cant_move <- 0L
@@ -23,8 +21,6 @@ rolling_stones <- function(vec, reverse = FALSE) {
     if (cant_move == length(vec)) break
   }
   if (reverse) vec <- rev(vec)
-  # print("Finished vector:")
-  # print(vec)
   vec
 }
 
@@ -45,13 +41,9 @@ print(sprintf("Part 1: %d", sum(number_of_stones * seq.int(nrow(reflector), 1)))
 #    result state from there
 spin_stones <- function(reflector) {
   result <- reflector
-  # north
   result <- apply(result, 2, rolling_stones, reverse = FALSE)
-  # west
   result <- do.call(rbind, apply(result, 1, rolling_stones, reverse = FALSE, simplify = FALSE))
-  # south
   result <- apply(result, 2, rolling_stones, reverse = TRUE)
-  # east
   result <- do.call(rbind, apply(result, 1, rolling_stones, reverse = TRUE, simplify = FALSE))
   result
 }
@@ -70,9 +62,8 @@ for (i in seq_along(reflector_states)) {
   reflector <- reflector_states[[i]]
 }
 # With the cycle length, calculate the remainder to find the correct position
-# In the example: Spin 3 == Spin 10
-remainder <- (1e09 - first_seen) %% 42L
+remainder <- (1e09 - first_seen) %% cycle_length
 rotation <- first_seen + remainder
 print(sprintf("Final rotation: %d", rotation))
-number_of_stones <- apply(reflector_states[[rotation]], 1, weight_of_stones)
+number_of_stones <- apply(reflector_states[[rotation]], 1L, weight_of_stones)
 print(sprintf("Part 2: %d", sum(number_of_stones * seq.int(nrow(reflector_states[[rotation]]), 1))))
