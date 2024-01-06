@@ -24,8 +24,6 @@ main <- function(file) {
   x <- m <- a <- s <- c(1L, 4000L)
   ranges <- list(x, m, a, s)
   names(ranges) <- c("x", "m", "a", "s")
-  # Starting workflow
-  f <- "in"
   # matrix with workflow name and all instructions
   wf_mat <- do.call(rbind, strsplit(workflows, "[}{]"))
   # named list of workflows with splitted instructions
