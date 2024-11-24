@@ -3,11 +3,12 @@
 #' Get AOC input
 #'
 #' Download the input for the AOC from the web with a given AOC session identifier
+#' via readLines.
 #'
 #' @param year The year for the AOC
 #' @param day The target day as a number between 1 and 26
 #'
-#' @return The input file for the specified day/year combination as a string
+#' @return The input file for the specified day/year combination as a string or vector of strings
 get_aoc <- function(year = NULL, day = NULL, session_cookie = NULL) {
   year <- as.integer(year) %||% format(Sys.Date(), "%Y")
   day <- as.integer(day) %||% format(Sys.Date(), "%d")
@@ -39,3 +40,9 @@ get_aoc <- function(year = NULL, day = NULL, session_cookie = NULL) {
 #' @param day The target day as a number between 1 and 26
 #'
 #' @return Message with the solution
+print_result <- function(year = NULL, day = NULL, solution = NULL) {
+  message(sprintf(
+    "The result for day %d of AOC %d is: %s\n",
+    day, year, solution
+  ))
+}
