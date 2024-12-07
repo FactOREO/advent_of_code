@@ -93,22 +93,21 @@ print_result(2024, 7, p1)
 # 4.033 sec elapsed
 # The result for day 7 of AOC 2024 is: 1260333054159
 
-# This is a brutforce solution which takes a long long time (~ 10 minutes)
-# Might be a possibility to check for the first N multiplications / concatenations and check if the resulting
-# number is greater than target already
+# Updated version stops a test case if a match was found
+# But there is still no heuristic to approximate the correct order or reduce the number of possible operations
+# by a huge amount to save unnecessary calculations.
 tictoc::tic()
 p2 <- mapply(\(i, idx) {
   values <- strsplit(i, ": ", fixed = TRUE)[[1L]]
   result <- values[[1L]] |> as.numeric()
   numbers <- strsplit(values[[2L]], " ", fixed = TRUE)[[1L]] |> as.numeric()
-  # cat(sprintf("Check if %s can be combined to %.0f\n", paste(numbers, collapse = ", "), result))
   operator_combinations <- generate_operators(length(numbers) - 1L, operators = c("*", "+", "||"))
-  results <- apply(operator_combinations, calculate_result, MARGIN = 1, numbers = numbers, target_value = result)
+  check_operator_combinations(operator_combinations, numbers, result)
   if (idx %% 10 == 0) cat(sprintf("Finished test case %d\n", idx))
-  if (any(results == result)) result
 }, i = input, idx = seq_along(input)) |> unlist() |> sum()
 tictoc::toc()
 
 print_result(2024, 7, p2)
-# 562.236 sec elapsed
+# OLD: 562.236 sec elapsed
+# NEW: 379.601 sec elapsed
 # The result for day 7 of AOC 2024 is: 162042343638683
