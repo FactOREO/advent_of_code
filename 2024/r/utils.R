@@ -29,7 +29,8 @@ get_aoc <- function(year = NULL, day = NULL, session_cookie = NULL) {
   ))
 
   headers <- c("Cookie" = session_cookie)
-  readLines(url(target_url, headers = headers))
+  readLines(url(target_url, headers = headers)) |>
+    write.table("../input/input.txt", sep = "", col.names = FALSE, row.names = FALSE, quote = FALSE)
 }
 
 #' Print Result
