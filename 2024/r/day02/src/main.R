@@ -1,6 +1,7 @@
 source("../../utils.R")
 session_cookie <- readLines("../../../../.aoc_session")
-input <- get_aoc(2024, 2, session_cookie) |> strsplit(" ") |> lapply(as.integer)
+get_aoc(2024, 2, session_cookie)
+input <- readLines("../input/input.txt") |> strsplit(" ") |> lapply(as.integer)
 
 p1 <- lapply(input, \(r) {
   d <- diff(r)

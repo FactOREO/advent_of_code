@@ -1,6 +1,7 @@
 source("../../utils.R")
 session_cookie <- readLines("../../../../.aoc_session")
-input <- get_aoc(2024, 3, session_cookie)
+get_aoc(2024, 3, session_cookie)
+input <- readLines("../input/input.txt")
 
 pattern <- "mul\\([0-9]*,[0-9]*\\)"
 p1 <- stringr::str_extract_all(input, pattern) |>

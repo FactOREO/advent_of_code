@@ -1,7 +1,7 @@
 source("../../utils.R")
 session_cookie <- readLines("../../../../.aoc_session")
-input <- get_aoc(2024, 6, session_cookie)
-# input <- readLines("../input/test_input.txt")
+get_aoc(2024, 6, session_cookie)
+input <- readLines("../input/input.txt")
 
 map <- strsplit(input, "", fixed=TRUE) |> do.call(rbind, args = _)
 

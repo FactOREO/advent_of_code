@@ -1,6 +1,7 @@
 source("../../utils.R")
 session_cookie <- readLines("../../../../.aoc_session")
-input <- get_aoc(2024, 1, session_cookie)
+get_aoc(2024, 1, session_cookie)
+input <- readLines("../input/input.txt")
 
 lists <- strsplit(input, "   ", fixed=TRUE) |> unlist()
 

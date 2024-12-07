@@ -1,7 +1,7 @@
 source("../../utils.R")
 session_cookie <- readLines("../../../../.aoc_session")
-input <- get_aoc(2024, 5, session_cookie)
-# input <- readLines("../input/test_input.txt")
+get_aoc(2024, 5, session_cookie)
+input <- readLines("../input/input.txt")
 
 # Find the empty section divider
 divider <- which(grepl("^$", input))
