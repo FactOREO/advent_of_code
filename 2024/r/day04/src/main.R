@@ -54,8 +54,15 @@ check_xmas <- function(row, col, mc, mr, curr_letter, word_puzzle, direction = N
 }
 
 start_points <- which(word_puzzle == "X", arr.ind=TRUE)
+
+tictoc::tic()
 p1 <- apply(start_points, \(x) {check_xmas(row = x[[1L]], col = x[[2L]], mc = ncol(word_puzzle), mr = nrow(word_puzzle), curr_letter = "X", word_puzzle = word_puzzle, direction = NULL)}, MARGIN = 1) |> unlist() |> sum()
+tictoc::toc()
+
 print_result(2024, 4, p1)
+# 0.647 sec elapsed
+# The result for day 4 of AOC 2024 is: 2483
+
 
 # Part 2
 # Modify check_xmas to search for diagonal M - S entries with start points equal to A
@@ -97,6 +104,11 @@ check_x_mas <- function(row, col, mc, mr, word_puzzle) {
     return(TRUE)
 }
 
+tictoc::tic()
 start_points <- which(word_puzzle == "A", arr.ind=TRUE)
 p2 <- apply(start_points, \(x) { check_x_mas(x[[1L]], x[[2L]], nrow(word_puzzle), ncol(word_puzzle), word_puzzle)}, MARGIN = 1) |> unlist() |> sum()
+tictoc::toc()
+
 print_result(2024, 4, p2)
+# 0.227 sec elapsed
+# The result for day 4 of AOC 2024 is: 1925

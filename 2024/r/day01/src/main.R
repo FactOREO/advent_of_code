@@ -8,12 +8,14 @@ lists <- strsplit(input, "   ", fixed=TRUE) |> unlist()
 left_list  <- lists[seq.int(from=1, to=length(lists), by=2)] |> as.integer()
 right_list <- lists[seq.int(from=2, to=length(lists), by=2)] |> as.integer()
 
+tictoc::tic()
 p1 <- sum(abs(
     left_list[order(left_list)] - right_list[order(right_list)]
   ))
+tictoc::toc()
 
-print("Part 1:")
 print_result(2024, 1, p1)
+# 0.001 sec elapsed
 # The result for day 1 of AOC 2024 is: 1222801
 
 vals_left <- unique(left_list)
@@ -27,11 +29,13 @@ get_count_from_table_by_value <- function(v, t) {
   0L
 }
 
+tictoc::tic()
 p2 <- sapply(vals_left, \(v) {
   c <- get_count_from_table_by_value(v, table_right)
   v * c
 }) |> sum()
+tictoc::toc()
 
-print("Part 2:")
 print_result(2024, 1, p2)
+# 0.012 sec elapsed
 # The result for day 1 of AOC 2024 is: 22545250

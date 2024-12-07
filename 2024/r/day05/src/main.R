@@ -50,6 +50,7 @@ get_middle_value_as_integer <- function(vec) {
   as.integer(vec[[(ceiling(length(vec) / 2))]])
 }
 
+tictoc::tic()
 correct_instructions <- sapply(lapply(
   update_instructions, is_update_in_correct_order, page_mapping = page_mapping), isTRUE
 )
@@ -57,8 +58,11 @@ correct_instructions <- sapply(lapply(
 p1 <- mapply(function(vec, in_order) {
   if (in_order) get_middle_value_as_integer(strsplit(vec, ",")[[1L]]) else 0L
 }, vec = update_instructions, in_order = correct_instructions) |> sum()
+tictoc::toc()
 
 print_result(2024, 5, p1)
+# 0.035 sec elapsed
+# The result for day 5 of AOC 2024 is: 4872
 
 ### Part 2
 # Get all wrong instructions and re-order them to get the correct instruction order
@@ -134,8 +138,12 @@ rearrange_wrong_instruction <- function(instruction, page_mapping) {
   instructions
 }
 
+tictoc::tic()
 new_instructions <- mapply(rearrange_wrong_instruction, instruction=wrong_instructions, MoreArgs=list(page_mapping=page_mapping))
 
 p2 <- sapply(new_instructions, get_middle_value_as_integer) |> sum()
+tictoc::toc()
 
 print_result(2024, 5, p2)
+ #0.221 sec elapsed
+# The result for day 5 of AOC 2024 is: 5564

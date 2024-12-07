@@ -79,9 +79,14 @@ get_guard_path <- function(map) {
   seen_tiles
 }
 
+tictoc::tic()
 guard_tiles <- get_guard_path(map)
 p1 <- sum(unlist(guard_tiles))
+tictoc::toc()
+
 print_result(2024, 6, p1)
+# 0.05 sec elapsed
+# The result for day 6 of AOC 2024 is: 5534
 
 # Create loops - place a new obstacle on the map and see, if we can reach an already seen obstacle from the same
 # direction. Only check new obstacles on tiles from part 1, since the guard will not reach other tiles anyway
@@ -169,6 +174,7 @@ check_for_loop <- function(map) {
   }
 }
 
+tictoc::tic()
 # Indices to check for a loop if a new obstacle is placed
 tiles_to_check <-  lapply(guard_tiles, \(l) { sapply(l, isTRUE) } ) |>
   unlist() |>
@@ -185,4 +191,8 @@ loops <- mapply(function(r, c, map) {
 detected_loops <- tiles_to_check[which(loops), ]
 
 p2 <- sum(loops)
+tictoc::toc()
+
 print_result(2024, 6, p2)
+# 5.556 sec elapsed
+ #The result for day 6 of AOC 2024 is: 2262
