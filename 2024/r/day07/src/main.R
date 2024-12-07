@@ -68,6 +68,8 @@ print_result(2024, 7, p1)
 # The result for day 7 of AOC 2024 is: 1260333054159
 
 # This is a brutforce solution which takes a long long time (~ 10 minutes)
+# Might be a possibility to check for the first N multiplications / concatenations and check if the resulting
+# number is greater than target already
 p2 <- mapply(\(i, idx) {
   values <- strsplit(i, ": ", fixed = TRUE)[[1L]]
   result <- values[[1L]] |> as.numeric()
