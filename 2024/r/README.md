@@ -11,3 +11,7 @@ This repository contains my solutions for the Advent of Code 2024 written in `R`
 ### Day 14 - Restroom Redoubt
 
 ![](day14/output/image_7051.png)
+
+### Day 15 - Warehouse Woes
+
+![](day15/output/animation.mp4)
