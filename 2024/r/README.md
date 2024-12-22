@@ -14,5 +14,5 @@ This repository contains my solutions for the Advent of Code 2024 written in `R`
 
 ### Day 15 - Warehouse Woes
 
-![](day15/output/animation.mp4)
-[![Watch the video](day15/output/animation.mp4)](day15/output/animation.mp4)
+https://github.com/user-attachments/assets/efee75e3-3cff-463c-85ba-252c40c27465
+
