@@ -16,3 +16,6 @@ This repository contains my solutions for the Advent of Code 2024 written in `R`
 
 https://github.com/user-attachments/assets/efee75e3-3cff-463c-85ba-252c40c27465
 
+### Day 16 - Reindeer Maze
+
+![](day16/output/maze_plot.png)
