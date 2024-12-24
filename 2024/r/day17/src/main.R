@@ -4,7 +4,6 @@ bitShiftL <- function(x, shift) {
   bit64::as.integer64(as.numeric(x) * (2 ^ shift))
 }
 
-# Shift Right
 bitShiftR <- function(x, shift) {
   if (shift < 0 || shift > 64) stop("Shift value must be between 0 and 64")
   bit64::as.integer64(as.numeric(x) %/% (2 ^ shift))
@@ -42,7 +41,6 @@ bitOr <- function(a, b) {
   }
   bit64::as.integer64.bitstring(paste(res, collapse = ""))
 }
-
 
 # Opcode 0 - Divide regA by 2^operand
 # Opcode 6 - Do opcode 0 with regB
